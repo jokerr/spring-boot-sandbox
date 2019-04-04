@@ -1,0 +1,26 @@
+logging:
+  level:
+    io.jokerr.spring.sandbox.demo: debug
+
+spring:
+  output:
+    ansi:
+      enabled: always
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,widget
+
+
+--- # prod config
+spring:
+  profiles: prod
+  output:
+    ansi:
+      enabled: never
+
+logging:
+  level:
+    io.jokerr.spring.sandbox.demo: info
