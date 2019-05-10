@@ -13,6 +13,13 @@ management:
       exposure:
         include: health,info,widget
 
+--- # test config
+spring:
+  profiles: test
+
+logging:
+  level:
+    io.jokerr.spring.sandbox.demo: info
 
 --- # prod config
 spring:
@@ -23,4 +30,4 @@ spring:
 
 logging:
   level:
-    io.jokerr.spring.sandbox.demo: info
+    io.jokerr.spring.sandbox.demo: error
