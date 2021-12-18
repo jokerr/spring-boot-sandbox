@@ -23,6 +23,10 @@ dependencies {
     annotationProcessor  'org.springframework.boot:spring-boot-configuration-processor'
 }
 
+test {
+    useJUnitPlatform()
+}
+
 configurations {
     compileOnly {
         extendsFrom annotationProcessor
