@@ -21,7 +21,7 @@ public class WidgetController {
     }
 
     @GetMapping("/{widgetId}")
-    public ResponseEntity getWidget(@PathVariable("widgetId") String widgetId) {
+    public ResponseEntity getWidget(@PathVariable("widgetId") int widgetId) {
         return ResponseEntity.ok(service.getWidget(widgetId));
     }
 }
