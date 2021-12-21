@@ -13,9 +13,12 @@ import java.util.List;
 
 @Repository
 public class WidgetRepository {
+    private EntityManager em;
 
     @Autowired
-    private EntityManager em;
+    public WidgetRepository(EntityManager entityManager) {
+        this.em = entityManager;
+    }
 
     public Widget getWidget(Integer id) {
         return em.find(Widget.class, id);

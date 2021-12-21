@@ -1,6 +1,6 @@
 logging:
   level:
-    io.jokerr.spring.sandbox.demo: debug
+    io.jokerr.spring.sandbox.demo: trace
 
 spring:
   banner:
@@ -24,15 +24,36 @@ spring:
 
 management:
   endpoints:
+    enabled-by-default: false
     web:
       exposure:
         include: health,info,widget
+  endpoint:
+    health:
+      enabled: true
+      show-details: always
+    info:
+      enabled: true
+  health:
+    defaults:
+      enabled: false
+    diskspace:
+      enabled: true
+    ping:
+      enabled: true
+    livenessstate: # see https://docs.spring.io/spring-boot/docs/current/reference/html/actuator.html#actuator.endpoints.kubernetes-probes
+      enabled: true
+    readinessstate:
+      enabled: true
 
 --- # test config
 spring:
   config:
     activate:
       on-profile: test
+  sql:
+    init:
+      mode: never # see https://www.baeldung.com/spring-boot-data-sql-and-schema-sql for more info on embedded db
 
 logging:
   level:
@@ -49,7 +70,15 @@ spring:
   output:
     ansi:
       enabled: never
+  sql:
+    init:
+      mode: never
 
 logging:
   level:
-    io.jokerr.spring.sandbox.demo: error
+    io.jokerr.spring.sandbox.demo: warn
+
+management:
+  endpoint:
+    health:
+      show-details: never
